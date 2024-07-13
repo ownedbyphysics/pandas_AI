@@ -1,5 +1,4 @@
 # Ask Your CSV 
-
 is a Streamlit web application designed to interactively explore and analyze CSV files. Users can upload a CSV file, ask questions about the data, visualize basic statistics, and generate plots seamlessly within the browser.
 
 ## Features
