@@ -8,6 +8,13 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
+openai_api_key = ''
+
+def chat_with_csv(df, prompt):
+    llm = OpenAI(api_token=openai_api_key)
+    pandas_ai = SmartDataframe(df, config={"llm": llm})
+    result = pandas_ai.chat(prompt)
+    return result
 
 
 
@@ -28,3 +35,13 @@ if input_csv:
     #Enter the query for analysis
     st.info("Chat Below")
     input_text = st.text_area("Enter the query")
+    
+    
+    if input_text:
+        #st.info("Your Query: " + input_text)
+        result = chat_with_csv(data, input_text)
+        fig_number = plt.get_fignums()
+        if fig_number:
+            st.pyplot(plt.gcf())
+        else:
+            st.success(result)
